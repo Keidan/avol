@@ -1,7 +1,7 @@
 avol
 ===
 
-(GPL) Android Bits to Octets converter is a FREE software.
+(GPL) Android Audio Volume manager is a FREE software.
 
 This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
 
