@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent"
+   android:background="@android:color/transparent"
+   android:orientation="vertical"
+   tools:context=".BlockBackgroundActivity">
+	<RelativeLayout
+	    android:id="@+id/layout_root"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:padding="10dp" >
+	    <!-- Title -->
+	    <TextView
+	        android:id="@+id/textViewTitle"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/title" 
+	        android:textStyle="bold" 
+	        android:textSize="24sp" 
+	        android:typeface="sans" 
+	        android:layout_marginBottom="15dp"/>
+	    <!-- MUTE -->
+	    <ImageButton
+	        android:id="@+id/btSilent"
+	        android:layout_width="32dp"
+	        android:layout_height="32dp"
+	        android:layout_alignRight="@+id/textViewTitle"
+	        android:contentDescription="@string/mute"
+	        android:scaleType="fitCenter" />
+	    <LinearLayout
+	        android:id="@+id/layoutCenter"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_below="@+id/textViewTitle"
+	        android:orientation="vertical">
+	        
+	        <CheckBox
+	            android:id="@+id/chkPromptFeedback"
+	            android:layout_width="match_parent"
+	            android:layout_height="32dp"
+	            android:text="@string/disable_sounds" 
+	            android:layout_marginBottom="15dp"/>
+	
+	        <TextView
+	            android:id="@+id/textViewAlarm"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/stream_alarm" />
+	
+	        <LinearLayout
+	            android:id="@+id/layout1"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	
+	            <ImageView
+	                android:id="@+id/imageView1"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:contentDescription="@string/stream_alarm"
+	                android:src="@drawable/alarms" />
+	
+	            <SeekBar
+	                android:id="@+id/seekBarAlarm"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content" />
+	        </LinearLayout>
+	
+	        <TextView
+	            android:id="@+id/textViewDTMF"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/stream_dtmf" />
+	
+	        <LinearLayout
+	            android:id="@+id/layout2"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	
+	            <ImageView
+	                android:id="@+id/imageView2"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:contentDescription="@string/stream_dtmf"
+	                android:src="@drawable/dtmf" />
+	
+	            <SeekBar
+	                android:id="@+id/seekBarDTMF"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content" />
+	        </LinearLayout>
+	
+	        <TextView
+	            android:id="@+id/textViewMusic"
+	            android:layout_width="302dp"
+	            android:layout_height="wrap_content"
+	            android:text="@string/stream_music" />
+	
+	        <LinearLayout
+	            android:id="@+id/layout3"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	
+	            <ImageView
+	                android:id="@+id/imageView3"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:contentDescription="@string/stream_music"
+	                android:src="@drawable/music" />
+	
+	            <SeekBar
+	                android:id="@+id/seekBarMusic"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content" />
+	        </LinearLayout>
+	
+	        <TextView
+	            android:id="@+id/textViewNotification"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/stream_notification" />
+	
+	        <LinearLayout
+	            android:id="@+id/layout4"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	
+	            <ImageView
+	                android:id="@+id/imageView4"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:contentDescription="@string/stream_notification"
+	                android:src="@drawable/notification" />
+	
+	            <SeekBar
+	                android:id="@+id/seekBarNotification"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content" />
+	        </LinearLayout>
+	
+	        <TextView
+	            android:id="@+id/textViewRing"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/stream_ring" />
+	
+	        <LinearLayout
+	            android:id="@+id/layout5"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	
+	            <ImageView
+	                android:id="@+id/imageView5"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:contentDescription="@string/stream_ring"
+	                android:src="@drawable/ring" />
+	
+	            <SeekBar
+	                android:id="@+id/seekBarRing"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content" />
+	        </LinearLayout>
+	
+	        <TextView
+	            android:id="@+id/textViewSystem"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/stream_system" />
+	
+	        <LinearLayout
+	            android:id="@+id/layout6"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	
+	            <ImageView
+	                android:id="@+id/imageView6"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:contentDescription="@string/stream_system"
+	                android:src="@drawable/system" />
+	
+	            <SeekBar
+	                android:id="@+id/seekBarSystem"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content" />
+	        </LinearLayout>
+	
+	        <TextView
+	            android:id="@+id/textViewVoiceCall"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/stream_voice_call" />
+	
+	        <LinearLayout
+	            android:id="@+id/layout7"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	
+	            <ImageView
+	                android:id="@+id/imageView7"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:contentDescription="@string/stream_voice_call"
+	                android:src="@drawable/voice_call" />
+	
+	            <SeekBar
+	                android:id="@+id/seekBarVoiceCall"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content" />
+	        </LinearLayout>
+	    </LinearLayout>
+	</RelativeLayout>
+</LinearLayout>

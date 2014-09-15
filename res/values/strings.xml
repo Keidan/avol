@@ -1,5 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">avol</string>
-
+	<string name="disable_sounds">Play prompt feedback</string>
+	<string name="silent">Silent: </string>
+	<string name="mute">mute</string>
+	<string name="unmute">unmute</string>
+    <string name="stream_alarm">Alarm</string>
+    <string name="stream_dtmf">DTMF</string>
+    <string name="stream_music">Music</string>
+    <string name="stream_notification">Notification</string>
+    <string name="stream_ring">Ring</string>
+    <string name="stream_system">System</string>
+    <string name="stream_voice_call">Voice Call</string>
+    <string name="app_name">vol</string>
+	<string name="title">Volume</string>
+	<string name="empty"></string>
 </resources>
