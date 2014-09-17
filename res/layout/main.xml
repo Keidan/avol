@@ -7,11 +7,13 @@
    android:background="@android:color/transparent"
    android:orientation="vertical"
    tools:context=".BlockBackgroundActivity">
+
 	<RelativeLayout
 	    android:id="@+id/layout_root"
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
 	    android:padding="10dp" >
+
 	    <!-- Title -->
 	    <TextView
 	        android:id="@+id/textViewTitle"
@@ -23,14 +25,17 @@
 	        android:typeface="sans" 
 	        android:layout_marginBottom="15dp"/>
 	    <!-- MUTE -->
-	    <ImageButton
-	        android:id="@+id/btSilent"
-	        android:layout_width="32dp"
-	        android:layout_height="32dp"
-	        android:layout_alignRight="@+id/textViewTitle"
-	        android:contentDescription="@string/mute"
-	        android:scaleType="fitCenter" />
-	    <LinearLayout
+	 	<ImageButton
+	 	    android:id="@+id/btSilent"
+	 	    android:layout_width="32dp"
+	 	    android:layout_height="32dp"
+	 	    android:layout_alignRight="@+id/textViewTitle"
+	 	    android:layout_alignTop="@+id/textViewTitle"
+	 	    android:contentDescription="@string/mute"
+	 	    android:scaleType="fitCenter" />
+	    
+	    
+	 	<LinearLayout
 	        android:id="@+id/layoutCenter"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
@@ -39,12 +44,30 @@
 	        android:layout_below="@+id/textViewTitle"
 	        android:orientation="vertical">
 	        
-	        <CheckBox
-	            android:id="@+id/chkPromptFeedback"
-	            android:layout_width="match_parent"
-	            android:layout_height="32dp"
-	            android:text="@string/disable_sounds" 
-	            android:layout_marginBottom="15dp"/>
+	        <LinearLayout
+	            android:id="@+id/layout0"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal" >
+	
+	            
+			    <ImageButton
+			        android:id="@+id/btSettings"
+			        android:layout_width="32dp"
+			        android:layout_height="32dp"
+			        android:contentDescription="@string/settings"
+			        android:layout_marginBottom="15dp" />
+	
+	            <TextView
+	                android:id="@+id/textViewSettings"
+	                android:layout_width="match_parent"
+	                android:layout_height="32dp"
+	                android:gravity="center_vertical"
+	                android:text="@string/settings" />
+
+	        </LinearLayout>
+	        
+		   
 	
 	        <TextView
 	            android:id="@+id/textViewAlarm"
@@ -53,13 +76,13 @@
 	            android:text="@string/stream_alarm" />
 	
 	        <LinearLayout
-	            android:id="@+id/layout1"
+	            android:id="@+id/layoutAlarm"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal" >
 	
 	            <ImageView
-	                android:id="@+id/imageView1"
+	                android:id="@+id/imageViewAlarm"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
 	                android:contentDescription="@string/stream_alarm"
@@ -78,13 +101,13 @@
 	            android:text="@string/stream_dtmf" />
 	
 	        <LinearLayout
-	            android:id="@+id/layout2"
+	            android:id="@+id/layoutDTMF"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal" >
 	
 	            <ImageView
-	                android:id="@+id/imageView2"
+	                android:id="@+id/imageViewDTMF"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
 	                android:contentDescription="@string/stream_dtmf"
@@ -103,13 +126,13 @@
 	            android:text="@string/stream_music" />
 	
 	        <LinearLayout
-	            android:id="@+id/layout3"
+	            android:id="@+id/layoutMusic"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal" >
 	
 	            <ImageView
-	                android:id="@+id/imageView3"
+	                android:id="@+id/imageViewMusic"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
 	                android:contentDescription="@string/stream_music"
@@ -128,13 +151,13 @@
 	            android:text="@string/stream_notification" />
 	
 	        <LinearLayout
-	            android:id="@+id/layout4"
+	            android:id="@+id/layoutNotification"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal" >
 	
 	            <ImageView
-	                android:id="@+id/imageView4"
+	                android:id="@+id/imageViewNotification"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
 	                android:contentDescription="@string/stream_notification"
@@ -153,13 +176,13 @@
 	            android:text="@string/stream_ring" />
 	
 	        <LinearLayout
-	            android:id="@+id/layout5"
+	            android:id="@+id/layoutRing"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal" >
 	
 	            <ImageView
-	                android:id="@+id/imageView5"
+	                android:id="@+id/imageViewRing"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
 	                android:contentDescription="@string/stream_ring"
@@ -178,13 +201,13 @@
 	            android:text="@string/stream_system" />
 	
 	        <LinearLayout
-	            android:id="@+id/layout6"
+	            android:id="@+id/layoutSystem"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal" >
 	
 	            <ImageView
-	                android:id="@+id/imageView6"
+	                android:id="@+id/imageViewSystem"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
 	                android:contentDescription="@string/stream_system"
@@ -203,13 +226,13 @@
 	            android:text="@string/stream_voice_call" />
 	
 	        <LinearLayout
-	            android:id="@+id/layout7"
+	            android:id="@+id/layoutVoiceCall"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal" >
 	
 	            <ImageView
-	                android:id="@+id/imageView7"
+	                android:id="@+id/imageViewVoiceCall"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
 	                android:contentDescription="@string/stream_voice_call"
@@ -221,5 +244,6 @@
 	                android:layout_height="wrap_content" />
 	        </LinearLayout>
 	    </LinearLayout>
+
 	</RelativeLayout>
 </LinearLayout>

@@ -1,6 +1,10 @@
-package org.keidan.avol;
+package org.keidan.avol.main;
 
-import static org.keidan.avol.Config.CFG;
+
+import org.keidan.avol.R;
+import org.keidan.avol.SettingsActivity;
+import org.keidan.avol.VolActivity;
+
 import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
@@ -12,15 +16,14 @@ import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 public class ComponentsListener implements OnTouchListener,
-    OnSeekBarChangeListener, OnCheckedChangeListener, OnCompletionListener {
+    OnSeekBarChangeListener, OnCompletionListener, OnClickListener {
 
   private int          previousMode = -1;
   private MediaPlayer  mediaPlayer  = null;
@@ -34,7 +37,7 @@ public class ComponentsListener implements OnTouchListener,
     mediaPlayer.setLooping(false);
   }
   
-  protected void onVolumeChange(final boolean up) {
+  public void onVolumeChange(final boolean up) {
     int volume = getAudioManager().getStreamVolume(
         AudioManager.STREAM_RING);
     if(up) {
@@ -51,31 +54,40 @@ public class ComponentsListener implements OnTouchListener,
         }
     }
   }
+  
+  
 
-  protected void initSeekBars() {
+  public void initSeekBars() {
+    adaptee.getComponents().getAlarm().setVisibility(View.VISIBLE);
     adaptee
         .getComponents()
         .getAlarm()
         .setMax(getAudioManager().getStreamMaxVolume(AudioManager.STREAM_ALARM));
+    adaptee.getComponents().getDtmf().setVisibility(View.VISIBLE);
     adaptee.getComponents().getDtmf()
         .setMax(getAudioManager().getStreamMaxVolume(AudioManager.STREAM_DTMF));
+    adaptee.getComponents().getMusic().setVisibility(View.VISIBLE);
     adaptee
         .getComponents()
         .getMusic()
         .setMax(getAudioManager().getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+    adaptee.getComponents().getNotification().setVisibility(View.VISIBLE);
     adaptee
         .getComponents()
         .getNotification()
         .setMax(
             getAudioManager().getStreamMaxVolume(
                 AudioManager.STREAM_NOTIFICATION));
+    adaptee.getComponents().getRing().setVisibility(View.VISIBLE);
     adaptee.getComponents().getRing()
         .setMax(getAudioManager().getStreamMaxVolume(AudioManager.STREAM_RING));
+    adaptee.getComponents().getSystem().setVisibility(View.VISIBLE);
     adaptee
         .getComponents()
         .getSystem()
         .setMax(
             getAudioManager().getStreamMaxVolume(AudioManager.STREAM_SYSTEM));
+    adaptee.getComponents().getVoiceCall().setVisibility(View.VISIBLE);
     adaptee
         .getComponents()
         .getVoiceCall()
@@ -87,7 +99,7 @@ public class ComponentsListener implements OnTouchListener,
     refreshSeekBars();
   }
 
-  protected void refreshSeekBars() {
+  public void refreshSeekBars() {
     adaptee
         .getComponents()
         .getAlarm()
@@ -139,12 +151,12 @@ public class ComponentsListener implements OnTouchListener,
         adaptee.getComponents().getVoiceCall());
   }
 
-  protected static void initText(final Activity ctx, final int string_id,
+  public static void initText(final Activity ctx, final int string_id,
       final int tv_id, final SeekBar seek) {
     initText(ctx, string_id, tv_id, seek.getMax(), seek.getProgress());
   }
 
-  protected static void initText(final Activity ctx, final int string_id,
+  public static void initText(final Activity ctx, final int string_id,
       final int tv_id, final int max_progress, final int progress) {
     final StringBuilder text = new StringBuilder();
     text.append(ctx.getResources().getString(string_id));
@@ -155,32 +167,38 @@ public class ComponentsListener implements OnTouchListener,
     tv.setText(text.toString());
   }
 
-  protected AudioManager getAudioManager() {
+  public AudioManager getAudioManager() {
     if (audioManager == null)
       audioManager = (AudioManager) adaptee
           .getSystemService(Context.AUDIO_SERVICE);
     return audioManager;
   }
+  
+  public void refreshSettings() {
+      adaptee.getComponents().getSettings()
+          .setBackgroundResource(R.drawable.system);
+      
+  }
 
-  protected void refreshSilent() {
+  public void refreshSilent() {
     previousMode = getAudioManager().getRingerMode();
     switch (getAudioManager().getRingerMode()) {
-    case AudioManager.RINGER_MODE_NORMAL:
-      adaptee.getComponents().getSilent()
-          .setBackgroundResource(R.drawable.unmuted);
-      break;
-    case AudioManager.RINGER_MODE_VIBRATE:
-      adaptee.getComponents().getSilent()
-          .setBackgroundResource(R.drawable.vibrate);
-      break;
-    case AudioManager.RINGER_MODE_SILENT:
-      adaptee.getComponents().getSilent()
-          .setBackgroundResource(R.drawable.muted);
-      break;
+      case AudioManager.RINGER_MODE_NORMAL:
+        adaptee.getComponents().getSilent()
+            .setBackgroundResource(R.drawable.unmuted);
+        break;
+      case AudioManager.RINGER_MODE_VIBRATE:
+        adaptee.getComponents().getSilent()
+            .setBackgroundResource(R.drawable.vibrate);
+        break;
+      case AudioManager.RINGER_MODE_SILENT:
+        adaptee.getComponents().getSilent()
+            .setBackgroundResource(R.drawable.muted);
+        break;
     }
   }
 
-  protected synchronized void stopMedia() {
+  public synchronized void stopMedia() {
     // if (mediaPlayer.isPlaying())
     // mediaPlayer.stop();
     mediaPlayer.release();
@@ -219,7 +237,7 @@ public class ComponentsListener implements OnTouchListener,
       seekUpdate(seekBar, progress, false);
   }
 
-  protected void seekUpdate(final SeekBar seekBar, final int progress,
+  public void seekUpdate(final SeekBar seekBar, final int progress,
       final boolean forceNoPlay) {
     int type = -1, string_id = -1, tv_id = -1;
     if (seekBar.equals(adaptee.getComponents().getAlarm())) {
@@ -287,14 +305,6 @@ public class ComponentsListener implements OnTouchListener,
   }
 
   @Override
-  public void onCheckedChanged(final CompoundButton buttonView,
-      final boolean isChecked) {
-    if (buttonView.equals(adaptee.getComponents().getPromptFeedback())) {
-      CFG.add(Components.KEY_PROMPT_FEEDBACK, isChecked);
-    }
-  }
-
-  @Override
   public void onStartTrackingTouch(final SeekBar seekBar) {
   }
 
@@ -304,7 +314,13 @@ public class ComponentsListener implements OnTouchListener,
 
   @Override
   public void onCompletion(final MediaPlayer mp) {
-    Log.e(getClass().getSimpleName(), "******** onCompletion");
+  }
+
+  @Override
+  public void onClick(View v) {
+    if (v.equals(adaptee.getComponents().getSettings()) || v.equals(adaptee.getComponents().getLabelSettings())) {
+      adaptee.switchTo(SettingsActivity.class);
+    }
   }
 
 }

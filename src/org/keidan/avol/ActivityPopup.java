@@ -1,16 +1,18 @@
 package org.keidan.avol;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Process;
 import android.view.Window;
 import android.view.WindowManager;
 
 public abstract class ActivityPopup extends Activity {
-
+  private boolean back_finish = false;
+  
   protected void onCreate(final Bundle savedInstanceState, final boolean title,
-      final boolean modal, final int layout_id) {
+      final boolean modal, final boolean back_finish, final int layout_id) {
     super.onCreate(savedInstanceState);
+    this.back_finish = back_finish;
     if (title)
       requestWindowFeature(Window.FEATURE_LEFT_ICON);
     else
@@ -35,27 +37,34 @@ public abstract class ActivityPopup extends Activity {
       overridePendingTransition(R.anim.animation_leave_in,
           R.anim.animation_leave_out);
   }
-  
-  private void exit() {
-    atexit();
-    Process.killProcess(Process.myPid());
-    System.exit(0);
-  }
 
   @Override
   public void onBackPressed() {
     super.onBackPressed();
     overrideTransition(false);
-    finish();
-    exit();
+    if(back_finish)
+      finish();
+    atexit();
   }
 
   @Override
   public void onDestroy() {
     super.onDestroy();
     overrideTransition(false);
-    exit();
+    atexit();
+  }
+
+  protected abstract void atexit();
+  
+  public void switchTo(final Class<?> c) {
+    switchTo(c, null, null);
   }
   
-  protected abstract void atexit();
+  public void switchTo(final Class<?> c, final String extraKey, final String extraValue) {
+    final Intent i = new Intent(getApplicationContext(), c);
+    if (extraKey != null && extraValue != null)
+      i.putExtra(extraKey, extraValue);
+    startActivity(i);
+    overrideTransition(true);
+  }
 }

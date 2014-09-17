@@ -5,10 +5,19 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class Config {
+  public static final String       KEY_PROMPT_FEEDBACK     = "prompt.feedback";
+  public static final String       KEY_STREAM_ALARM        = "stream.alarm";
+  public static final String       KEY_STREAM_DTMF         = "stream.dtmf";
+  public static final String       KEY_STREAM_MUSIC        = "stream.music";
+  public static final String       KEY_STREAM_NOTIFICATION = "stream.notification";
+  public static final String       KEY_STREAM_RING         = "stream.ring";
+  public static final String       KEY_STREAM_SYSTEM       = "stream.system";
+  public static final String       KEY_STREAM_VOICE_CALL   = "stream.voice.call";
+
   public static final Config       CFG;
-  private SharedPreferences        preferences = null;
-  private SharedPreferences.Editor editor      = null;
-  private static Config            instance    = null;
+  private SharedPreferences        preferences             = null;
+  private SharedPreferences.Editor editor                  = null;
+  private static Config            instance                = null;
 
   static {
     CFG = getInstance();
@@ -55,12 +64,14 @@ public class Config {
     if (!contains(key))
       return defaults;
     final String tmp = preferences.getString(key, defaults);
-    if (tmp == null) return defaults;
+    if (tmp == null)
+      return defaults;
     return tmp;
   }
 
   public boolean get(final String key, final boolean defaults) {
-    if (!contains(key)) return defaults;
+    if (!contains(key))
+      return defaults;
     return preferences.getBoolean(key, defaults);
   }
 }
