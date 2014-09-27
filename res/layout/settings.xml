@@ -10,12 +10,14 @@
 
     <CheckBox
         android:id="@+id/chkPromptFeedback"
+        android:layout_marginLeft="10dip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/disable_sounds" />
 
     <ListView
         android:id="@+id/listSounds"
+        android:layout_marginBottom="10dip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
